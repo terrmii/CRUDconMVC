@@ -1,0 +1,13 @@
+@charset "ISO-8859-1";
+
+*{
+	background-color: #8080c0;
+}
+
+.container{
+	width: 80%
+}
+
+.container p{
+	margin: 0 auto;
+}
