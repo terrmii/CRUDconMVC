@@ -14,7 +14,7 @@ public class GestorBBDD extends Conector{
 	Conector con = new Conector();
 	PreparedStatement ps;
 
-	public ArrayList<Usuario> visualizarCliente(){
+	public ArrayList<Usuario> visualizarUsuarios(){
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 			try {
 				con.conectar();
@@ -22,11 +22,12 @@ public class GestorBBDD extends Conector{
 				ResultSet res = ps.executeQuery();
 				while (res.next()) {
 					Usuario usuario = new Usuario();
-					usuario.setId(res.getInt("Id"));
-					usuario.setNombre(res.getString("nombre"));
+					usuario.setId(res.getInt(1));
+					usuario.setNombre(res.getString(2));
 
 					usuarios.add(usuario);
 				}
+				con.cerrar();
 				return usuarios;
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -40,30 +41,32 @@ public class GestorBBDD extends Conector{
 		return usuarios;
 	}
 	
-//	public ArrayList<Usuario> verUsuarios(){
-//		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-//        try {
-//        	con.conectar();
-//            PreparedStatement verU = con.getCon().prepareStatement("SELECT * FROM usuarios");
-//            verU.execute();
-//            
-//            ResultSet resultado = verU.executeQuery();
-//            
-//            while(resultado.next()) {
-//                Usuario usuario = new Usuario();
-//                
-//                usuario.setId(resultado.getInt("Id"));
-//                usuario.setNombre(resultado.getString("nombre"));
-//                
-//                usuarios.add(usuario);
-//            }
-//            con.cerrar();
-//        } catch (SQLException | ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        return usuarios;
-//	}
-
+	public void insertarUsuarios(Usuario usuario){
+		try {
+			con.conectar();
+			ps = con.getCon().prepareStatement(
+					"INSERT INTO usuarios (nombre) VALUES (?)");
+			ps.setString(1, usuario.getNombre());
+			ps.execute();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
+	public void eliminarUsuarios(String id){
+		try {
+			con.conectar();
+			ps = con.getCon().prepareStatement(
+					"DELETE FROM usuarios WHERE id = ?");
+			ps.setString(1, id);
+			ps.execute();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 }
