@@ -28,13 +28,24 @@ public class ModificarUsuarios extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		
+//		String modificar = (String) request.getParameter("valores");
+//		String id = (String) request.getParameter("id");
+//		String nuevoValor = (String) request.getParameter("textomodificar");
+//		
+//		GestorBBDD bbdd = new GestorBBDD();
+//		bbdd.modificarCliente(id, modificar, nuevoValor);
+//		
 		
-		String modificar = (String) request.getParameter("valores");
-		String id = (String) request.getParameter("id");
-		String nuevoValor = (String) request.getParameter("textomodificar");
-		
-		GestorBBDD bbdd = new GestorBBDD();
-		bbdd.modificarUsuario(id, modificar, nuevoValor);
+		String id = request.getParameter("idU");
+        String nombre = request.getParameter("textomodificar");
+        GestorBBDD bbdd = new GestorBBDD();
+            try {
+				bbdd.modificarCliente(id, nombre);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 		response.sendRedirect(request.getContextPath() + "/VerUsuarios");
 	}

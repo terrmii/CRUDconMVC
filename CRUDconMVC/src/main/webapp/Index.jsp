@@ -65,14 +65,18 @@
 			</td>
 			
 			<td>	
-				<label for="atributos">Que desea modificar: </label>
-				<select name="valores" id="valores">
-				    <option value="nombre">Nombre</option>
-				  	<option value="password">Password</option>
-				</select>
+			
 				
 				<form method="get" action="ModificarUsuarios">
-					<input type="text" name="textomodificar" class = "ml-3" /><input type="submit" value="Modificar Usuario" />
+							<label for="atributos">Que desea modificar: </label>
+							<select name="valores" id="valores">
+						    	<option value="nombre">Nombre</option>
+						  		<option value="password">Password</option>
+							</select>
+					<input type="text" name="textomodificar" class = "ml-3" />
+					<input type="hidden" name="idU" value="<%out.print(usuario.getId());%>">
+					<input type="submit" value="Modificar Usuario"/>
+					
 				</form>
 			</td>
 			
