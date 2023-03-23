@@ -20,10 +20,10 @@
 			<table style="width: 20%">
 				<tr>
 					<td>Nombre</td>
-					<td><input type="text" name="nombre" /></td>
+					<td><input type="text" name="nombre" /><input type="submit" value="Insertar Usuario" /></td>
 				</tr>
 			</table>
-			<input type="submit" value="Insertar Usuario" />
+	
 
 		</form>
 
@@ -38,7 +38,8 @@
 			<tr>
 				<th scope="col">ID</th>
 				<th scope="col">Nombre</th>
-				<th scope="col">Acciones</th>
+				<th scope="col">Eliminar</th>
+				<th scope="col">Modificar</th>
 
 
 			</tr>
@@ -59,20 +60,28 @@
 				out.println(usuario.getNombre());
 				%>
 			</td>
-			<td><a
-				href="/CRUDconMVC/EliminarUsuarios?id=<%out.println(usuario.getId());%>">Eliminar</a>
-
-				<a class="ml-2"
-				href="/CRUDconMVC/ModificarUsuarios?id=<%out.println(usuario.getId());%>">Modificar</a>
+			<td>
+				<a href="/CRUDconMVC/EliminarUsuarios?id=<%out.println(usuario.getId());%>">Eliminar</a>
 			</td>
+			
+			<td>	
+				<label for="atributos">Que desea modificar: </label>
+				<select name="valores" id="valores">
+				    <option value="nombre">Nombre</option>
+				  	<option value="password">Password</option>
+				</select>
+				
+				<form method="get" action="ModificarUsuarios">
+					<input type="text" name="textomodificar" class = "ml-3" /><input type="submit" value="Modificar Usuario" />
+				</form>
+			</td>
+			
 		</tr>
 
 		<%
 		}
 		%>
 	</table>
-
-
 
 </body>
 </html>

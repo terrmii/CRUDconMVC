@@ -68,5 +68,19 @@ public class GestorBBDD extends Conector{
 		}
 		
 	}
+	
+	public void modificarUsuario(String id, String modificar, String nuevoValor){
+		try {
+			con.conectar();
+			ps = con.getCon().prepareStatement("UPDATE usuarios SET " + modificar + " = ? WHERE `usuarios`.`id` = ?");
+			ps.setString(1, nuevoValor);
+			ps.setString(2, id);
+			ps.execute();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	}
 
 }

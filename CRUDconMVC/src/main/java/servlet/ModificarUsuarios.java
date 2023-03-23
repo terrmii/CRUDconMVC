@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import gestores.GestorBBDD;
 
 /**
- * Servlet implementation class EliminarUsuarios
+ * Servlet implementation class ModificarUsuarios
  */
-@WebServlet("/EliminarUsuarios")
-public class EliminarUsuarios extends HttpServlet {
+@WebServlet("/ModificarUsuarios")
+public class ModificarUsuarios extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EliminarUsuarios() {
+    public ModificarUsuarios() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,16 +28,15 @@ public class EliminarUsuarios extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//guardar el ID
+		
+		String modificar = (String) request.getParameter("valores");
 		String id = (String) request.getParameter("id");
+		String nuevoValor = (String) request.getParameter("textomodificar");
 		
-		//eliminar el usuario de la base de datos	
 		GestorBBDD bbdd = new GestorBBDD();
-		bbdd.eliminarUsuarios(id);
+		bbdd.modificarUsuario(id, modificar, nuevoValor);
 		
-		//volver a la pagina principal
 		response.sendRedirect(request.getContextPath() + "/VerUsuarios");
-
 	}
 
 	/**
