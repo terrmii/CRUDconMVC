@@ -39,9 +39,11 @@ public class ModificarUsuarios extends HttpServlet {
 		
 		String id = request.getParameter("idU");
         String nombre = request.getParameter("textomodificar");
+        String modificar = request.getParameter("valores");
+        
         GestorBBDD bbdd = new GestorBBDD();
             try {
-				bbdd.modificarCliente(id, nombre);
+				bbdd.modificarCliente(id, nombre, modificar);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

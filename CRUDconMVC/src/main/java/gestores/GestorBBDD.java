@@ -83,10 +83,10 @@ public class GestorBBDD extends Conector{
 //	
 //	}
 	
-	public void modificarCliente(String id, String nombre) throws ClassNotFoundException {
+	public void modificarCliente(String id, String nombre, String modificar) throws ClassNotFoundException {
         try {
             con.conectar();
-            ps = con.getCon().prepareStatement("UPDATE usuarios SET nombre = ? WHERE id = ?");
+            ps = con.getCon().prepareStatement("UPDATE usuarios SET "+modificar+" = ? WHERE id = ?");
             ps.setString(1, nombre);
             ps.setString(2, id);
             ps.execute();
