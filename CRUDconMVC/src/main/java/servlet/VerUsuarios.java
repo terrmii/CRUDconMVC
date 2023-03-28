@@ -22,7 +22,7 @@ public class VerUsuarios extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public VerUsuarios() {
-        super();
+        super();	
         // TODO Auto-generated constructor stub
     }
 

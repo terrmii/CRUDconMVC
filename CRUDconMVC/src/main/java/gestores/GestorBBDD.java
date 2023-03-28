@@ -24,7 +24,7 @@ public class GestorBBDD extends Conector{
 					Usuario usuario = new Usuario();
 					usuario.setId(res.getInt(1));
 					usuario.setNombre(res.getString(2));
-
+					usuario.setContrasena(res.getString(3));
 					usuarios.add(usuario);
 				}
 				con.cerrar();
@@ -44,9 +44,9 @@ public class GestorBBDD extends Conector{
 	public void insertarUsuarios(Usuario usuario){
 		try {
 			con.conectar();
-			ps = con.getCon().prepareStatement(
-					"INSERT INTO usuarios (nombre) VALUES (?)");
+			ps = con.getCon().prepareStatement("INSERT INTO usuarios (nombre, contrasena) VALUES (?, ?)");
 			ps.setString(1, usuario.getNombre());
+			ps.setString(2, usuario.getContrasena());
 			ps.execute();
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -68,22 +68,8 @@ public class GestorBBDD extends Conector{
 		}
 		
 	}
-	
-//	public void modificarUsuario(String id, String modificar, String nuevoValor){
-//		try {
-//			con.conectar();
-//			ps = con.getCon().prepareStatement("UPDATE usuarios SET " + modificar + " = ? WHERE `usuarios`.`id` = ?");
-//			ps.setString(1, nuevoValor);
-//			ps.setString(2, id);
-//			ps.execute();
-//		} catch (ClassNotFoundException | SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	
-//	}
-	
-	public void modificarCliente(String id, String nombre, String modificar) throws ClassNotFoundException {
+
+	public void modificarUsuario(String id, String nombre, String modificar) throws ClassNotFoundException {
         try {
             con.conectar();
             ps = con.getCon().prepareStatement("UPDATE usuarios SET "+modificar+" = ? WHERE id = ?");

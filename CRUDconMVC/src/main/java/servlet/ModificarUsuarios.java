@@ -43,7 +43,7 @@ public class ModificarUsuarios extends HttpServlet {
         
         GestorBBDD bbdd = new GestorBBDD();
             try {
-				bbdd.modificarCliente(id, nombre, modificar);
+				bbdd.modificarUsuario(id, nombre, modificar);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
