@@ -8,6 +8,7 @@ import java.util.Date;
 
 import utilidades.Conector;
 import utilidades.Usuario;
+import utilidades.Rol;
 
 public class GestorBBDD extends Conector{
 
@@ -18,6 +19,7 @@ public class GestorBBDD extends Conector{
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 			try {
 				con.conectar();
+				Rol rol = new Rol();
 				ps = con.getCon().prepareStatement("SELECT * from usuarios");
 				ResultSet res = ps.executeQuery();
 				while (res.next()) {
@@ -25,6 +27,7 @@ public class GestorBBDD extends Conector{
 					usuario.setId(res.getInt(1));
 					usuario.setNombre(res.getString(2));
 					usuario.setContrasena(res.getString(3));
+					usuario.setIdRol(res.getInt(4));
 					usuarios.add(usuario);
 				}
 				con.cerrar();
