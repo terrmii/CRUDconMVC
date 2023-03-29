@@ -67,7 +67,11 @@
 					${usuario.contrasena}
 				</td>
 				<td>
-					${usuario.idRol}
+					<c:forEach items ="${roles}" var="rol">
+						<c:if test="${rol.id == usuario.idRol}">
+						${rol.nombre}
+						</c:if>
+					</c:forEach>
 				</td>
 				
 				<td>

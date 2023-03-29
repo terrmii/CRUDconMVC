@@ -3,7 +3,7 @@ package utilidades;
 public class Rol {
 
 	int id;
-	int nombre;
+	String nombre;
 	
 	public int getId() {
 		return id;
@@ -12,10 +12,10 @@ public class Rol {
 		this.id = id;
 		return null;
 	}
-	public int getNombre() {
+	public String getNombre() {
 		return nombre;
 	}
-	public void setNombre(int nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	

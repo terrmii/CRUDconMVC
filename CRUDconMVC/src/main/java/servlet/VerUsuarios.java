@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import gestores.GestorBBDD;
+import utilidades.Rol;
 import utilidades.Usuario;
 
 /**
@@ -31,8 +32,11 @@ public class VerUsuarios extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+		ArrayList<Rol> roles = new ArrayList<Rol>();
 		GestorBBDD bbdd = new GestorBBDD();
+		roles = bbdd.getRoles();
 		usuarios = bbdd.visualizarUsuarios();
+		request.setAttribute("roles", roles);
 		request.setAttribute("VisualizarUsuarios", usuarios);
 		request.getRequestDispatcher("Index.jsp").forward(request, response);
 	}

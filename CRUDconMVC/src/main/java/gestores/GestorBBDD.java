@@ -84,4 +84,26 @@ public class GestorBBDD extends Conector{
         }
     }
 
+	public ArrayList<Rol> getRoles() {
+		ArrayList<Rol> roles = new ArrayList<Rol>();
+		try {
+			con.conectar();
+			ps = con.getCon().prepareStatement("SELECT * from roles");
+			
+			ResultSet res = ps.executeQuery();
+			while (res.next()) {
+				Rol rol = new Rol();
+				rol.setId(res.getInt(1));
+				rol.setNombre(res.getString(2));
+				roles.add(rol);
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return roles;
+	}
+
 }
