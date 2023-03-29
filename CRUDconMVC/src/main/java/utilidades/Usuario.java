@@ -8,12 +8,12 @@ public class Usuario {
 	String nombre;
 	String contrasena;
 	Date fecha;
-	int idRol;
+	String idRol;
 	
-	public int getIdRol() {
+	public String getIdRol() {
 		return idRol;
 	}
-	public void setIdRol(int idRol) {
+	public void setIdRol(String idRol) {
 		this.idRol = idRol;
 	}
 	Rol rol = new Rol();

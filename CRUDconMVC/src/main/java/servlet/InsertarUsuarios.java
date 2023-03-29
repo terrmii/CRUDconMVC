@@ -34,11 +34,13 @@ public class InsertarUsuarios extends HttpServlet {
 		// recibir los datos de la pagina principal
 		String nombre = (String) request.getParameter("nombre");
 		String contrasena = (String) request.getParameter("contrasena");
+		String idRol = (String) request.getParameter("rol"); 
 		
 		// crear un usuario
 		Usuario usuario = new Usuario();
 		usuario.setNombre(nombre);
 		usuario.setContrasena(contrasena);
+		usuario.setIdRol(idRol);
 
 		// insertar el usuario en la base de datos
 		GestorBBDD bbdd = new GestorBBDD();

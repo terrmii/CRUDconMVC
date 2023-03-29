@@ -24,8 +24,8 @@
 					<td>Rol</td>
 					<td>
 						<select name="roles" id="rol">
-					   	    <option value="nombre">Administrador</option>
-				 			<option value="contrasena">Recepcion</option>
+					   	    <option value="1">Administrador</option>
+				 			<option value="2">Cliente</option>
 						</select>
 					</td>
 					<td><input type="submit" value="Insertar Usuario"/></td>

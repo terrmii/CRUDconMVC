@@ -27,7 +27,7 @@ public class GestorBBDD extends Conector{
 					usuario.setId(res.getInt(1));
 					usuario.setNombre(res.getString(2));
 					usuario.setContrasena(res.getString(3));
-					usuario.setIdRol(res.getInt(4));
+					usuario.setIdRol(res.getString(4));
 					usuarios.add(usuario);
 				}
 				con.cerrar();
@@ -47,9 +47,10 @@ public class GestorBBDD extends Conector{
 	public void insertarUsuarios(Usuario usuario){
 		try {
 			con.conectar();
-			ps = con.getCon().prepareStatement("INSERT INTO usuarios (nombre, contrasena) VALUES (?, ?)");
+			ps = con.getCon().prepareStatement("INSERT INTO usuarios (nombre, contrasena, id_rol) VALUES (?, ?, ?)");
 			ps.setString(1, usuario.getNombre());
 			ps.setString(2, usuario.getContrasena());
+			ps.setString(3, usuario.getIdRol());
 			ps.execute();
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
